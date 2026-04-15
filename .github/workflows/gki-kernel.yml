@@ -530,6 +530,14 @@ jobs:
           echo "CONFIG_TCP_CONG_WESTWOOD=n" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_TCP_CONG_HTCP=n" >> ./common/arch/arm64/configs/gki_defconfig
 
+          # Add AutoFDO - Google Top-100 apps profile-guided optimization
+          if ls ./common/gki/aarch64/afdo/*.afdo 1>/dev/null 2>&1; then
+            echo "CONFIG_AUTOFDO_CLANG=y" >> ./common/arch/arm64/configs/gki_defconfig
+            echo "AutoFDO: profiles found, enabled"
+          else
+            echo "AutoFDO: no profiles in this ACK branch, skipped"
+          fi
+
           # Add SUSFS configuration settings
           echo "CONFIG_KSU_SUSFS=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_SUS_MAP=y" >> ./common/arch/arm64/configs/gki_defconfig
