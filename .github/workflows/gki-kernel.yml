@@ -531,7 +531,7 @@ jobs:
           echo "CONFIG_TCP_CONG_HTCP=n" >> ./common/arch/arm64/configs/gki_defconfig
 
           # Add AutoFDO - Google Top-100 apps profile-guided optimization
-          if ls ./common/gki/aarch64/afdo/*.afdo 1>/dev/null 2>&1; then
+          if ls ./common/android/gki/aarch64/afdo/*.afdo 1>/dev/null 2>&1; then
             echo "CONFIG_AUTOFDO_CLANG=y" >> ./common/arch/arm64/configs/gki_defconfig
             echo "AutoFDO: profiles found, enabled"
           else
